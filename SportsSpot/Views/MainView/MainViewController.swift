@@ -24,13 +24,17 @@ class MainViewController: UIViewController {
 //            }
 ////            print( resulte)
 //        }
-
-        Network.shared.fetchFixtures(sport: "football"){[weak self] resulte in
+        
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let modifiedDate = calendar.date(byAdding: .day, value: -3, to: currentDate)
+        Network.shared.fetchFixtures(sport: "football",from: nil){[weak self] resulte in
             
             guard let self = self else {return}
             switch resulte {
                 
             case .success(let done):
+                print("el hussin hena ")
                 print(done.result?[0].country_name)
             case .failure(let err):
                 print(err.localizedDescription)

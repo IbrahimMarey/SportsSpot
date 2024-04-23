@@ -44,9 +44,13 @@ class Network  {
         }
     }
     
-    func fetchFixtures(sport:String,completion: @escaping(Result<FixturesResult,Error>) -> Void) {
-        
-        let url = URL(string: "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&APIkey=\(apiKey)&from=2021-05-18&to=2021-05-18")
+    func fetchFixtures(sport:String,from dateFrom:Date?,completion: @escaping(Result<FixturesResult,Error>) -> Void) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let currentDate = Date()
+        let formattedDate = dateFormatter.string(from: currentDate)
+        let fromDate = dateFormatter.string(from: dateFrom ?? currentDate)
+        let url = URL(string: "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&APIkey=\(apiKey)&from=\(fromDate)&to=\(formattedDate)")
         AF.request(url!).validate().response{
             respon in
             switch respon.result{

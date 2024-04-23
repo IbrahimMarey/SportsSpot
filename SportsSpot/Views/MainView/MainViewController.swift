@@ -12,18 +12,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        Network.shared.fetchLeagues {[weak self] resulte in
-//            guard let self = self else {return}
-//            switch resulte {
-//
-//            case .success(let done):
-//                print(done.result?[0].country_name)
-//                print("Switch is here")
-//            case .failure(let err):
-//                print(err.localizedDescription)
-//            }
-////            print( resulte)
-//        }
+
         
         let calendar = Calendar.current
         let currentDate = Date()

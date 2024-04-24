@@ -28,14 +28,35 @@ class MainViewController: UIViewController {
             case .failure(let err):
                 print(err.localizedDescription)
             }
-            
         }
+        Network.shared.fetchLeagues(sport: "football") { [weak self] result in
+            guard let self = self else{return}
+            switch result{
+                case .success(let data):
+                print(data.result?[0].league_name)
+                //testNav.leagueTest = data.result?[0]
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
     }
 
     @IBAction func btn(_ sender: Any) {
         print("sab7")
-        let testNav = TestNavViewController()
+        let testNav = FavoutieViewController()
+        Network.shared.fetchLeagues(sport: "football") { [weak self] result in
+            guard let self = self else{return}
+            switch result{
+                case .success(let data):
+                print(data.result?[0].league_name)
+                testNav.leagueTest = data.result?[0]
+                print("test League home \(testNav.leagueTest?.league_key)")
+                self.navigationController?.pushViewController(testNav, animated: true)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
         
-        self.navigationController?.pushViewController(testNav, animated: true)
     }
 }

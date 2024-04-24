@@ -15,6 +15,8 @@
 		A72719712BD6F1B600F0328D /* TestNavViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A727196F2BD6F1B600F0328D /* TestNavViewController.xib */; };
 		A72719732BD6F3AE00F0328D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72719722BD6F3AE00F0328D /* Network.swift */; };
 		A72719752BD6FA2700F0328D /* FixturesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72719742BD6FA2700F0328D /* FixturesDto.swift */; };
+		A72719782BD8375800F0328D /* MainViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72719762BD8375800F0328D /* MainViewCell.swift */; };
+		A72719792BD8375800F0328D /* MainViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A72719772BD8375800F0328D /* MainViewCell.xib */; };
 		A7E45EEC2BD6DB3100096F05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E45EEB2BD6DB3100096F05 /* AppDelegate.swift */; };
 		A7E45EEE2BD6DB3100096F05 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E45EED2BD6DB3100096F05 /* SceneDelegate.swift */; };
 		A7E45EF62BD6DB3100096F05 /* SportsSpot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A7E45EF42BD6DB3100096F05 /* SportsSpot.xcdatamodeld */; };
@@ -31,6 +33,8 @@
 		A727196F2BD6F1B600F0328D /* TestNavViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestNavViewController.xib; sourceTree = "<group>"; };
 		A72719722BD6F3AE00F0328D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A72719742BD6FA2700F0328D /* FixturesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesDto.swift; sourceTree = "<group>"; };
+		A72719762BD8375800F0328D /* MainViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewCell.swift; sourceTree = "<group>"; };
+		A72719772BD8375800F0328D /* MainViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewCell.xib; sourceTree = "<group>"; };
 		A7E45EE82BD6DB3100096F05 /* SportsSpot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsSpot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E45EEB2BD6DB3100096F05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7E45EED2BD6DB3100096F05 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 			children = (
 				A727196A2BD6EF4100F0328D /* MainViewController.swift */,
 				A727196B2BD6EF4100F0328D /* MainViewController.xib */,
+				A72719762BD8375800F0328D /* MainViewCell.swift */,
+				A72719772BD8375800F0328D /* MainViewCell.xib */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -213,6 +219,7 @@
 				A7E45EF82BD6DB3400096F05 /* Assets.xcassets in Resources */,
 				A72719712BD6F1B600F0328D /* TestNavViewController.xib in Resources */,
 				A727196D2BD6EF4100F0328D /* MainViewController.xib in Resources */,
+				A72719792BD8375800F0328D /* MainViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A72719782BD8375800F0328D /* MainViewCell.swift in Sources */,
 				A7E45EF62BD6DB3100096F05 /* SportsSpot.xcdatamodeld in Sources */,
 				A7E45EEC2BD6DB3100096F05 /* AppDelegate.swift in Sources */,
 				A72719702BD6F1B600F0328D /* TestNavViewController.swift in Sources */,

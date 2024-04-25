@@ -25,9 +25,7 @@ class Network  {
             case .success(let data):
                 do{
                     let jsonData = try JSONDecoder().decode(LeagueDto.self, from: data!)
-                    print(jsonData.result?[0].country_name)
                     completion(.success(jsonData))
-//                    print(jsonData.result)
                     
                   
                 } catch {

@@ -7,22 +7,15 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout{
+class MainViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth : CGFloat = 170
           let itemHeight: CGFloat = 180
           return CGSize(width: itemWidth, height: itemHeight)
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10.0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 10.0
-//    }
     
-    let sportTypeList = ["Football", "Basktball", "Tennis", "Cricket"]
+    let sportTypeList = ["Football", "Basketball", "Tennis", "Cricket"]
       let sportTypeListImage = ["Football", "Basktball", "Tennis", "Cricket"]
     
     @IBOutlet weak var sportCollectionView: UICollectionView!
@@ -38,6 +31,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
               return cell
     }
     
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,49 +43,26 @@ class MainViewController: UIViewController, UICollectionViewDelegate,UICollectio
             self.sportCollectionView.delegate = self
         
         
-        let calendar = Calendar.current
-        let currentDate = Date()
-        let modifiedDate = calendar.date(byAdding: .day, value: -3, to: currentDate)
-        Network.shared.fetchFixtures(sport: "football",from: nil){[weak self] resulte in
-            
-            guard let self = self else {return}
-            switch resulte {
-                
-            case .success(let done):
-                print("el hussin hena ")
-                print(done.result?[0].country_name)
-            case .failure(let err):
-                print(err.localizedDescription)
-            }
-        }
-        Network.shared.fetchLeagues(sport: "football") { [weak self] result in
-            guard let self = self else{return}
-            switch result{
-                case .success(let data):
-                print(data.result?[0].league_name)
-                //testNav.leagueTest = data.result?[0]
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-        
+//        let calendar = Calendar.current
+//        let currentDate = Date()
+//        let modifiedDate = calendar.date(byAdding: .day, value: -3, to: currentDate)
+//        Network.shared.fetchFixtures(sport: "football",from: nil){[weak self] resulte in
+//
+//            guard let self = self else {return}
+//            switch resulte {
+//
+//            case .success(let done):
+//                print("el hussin hena ")
+//                print(done.result?[0].country_name)
+//            case .failure(let err):
+//                print(err.localizedDescription)
+//            }
+//        }
     }
-
-    @IBAction func btn(_ sender: Any) {
-        print("sab7")
-        let testNav = FavoutieViewController()
-        Network.shared.fetchLeagues(sport: "football") { [weak self] result in
-            guard let self = self else{return}
-            switch result{
-                case .success(let data):
-                print(data.result?[0].league_name)
-                testNav.leagueTest = data.result?[0]
-                print("test League home \(testNav.leagueTest?.league_key)")
-                self.navigationController?.pushViewController(testNav, animated: true)
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let leagueVC = LeagueTableViewController()
+        leagueVC.sport = sportTypeList[indexPath.row]
+        self.navigationController?.pushViewController(leagueVC, animated: true)
         }
-        
-    }
 }

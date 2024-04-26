@@ -24,7 +24,7 @@ class LeaguesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     override func layoutSubviews() {
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        //contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         layer.borderWidth = 1
         layer.borderColor = UIColor(red: 67/255, green: 74/255, blue: 249/255, alpha: 1.0).cgColor
         layer.cornerRadius = 10

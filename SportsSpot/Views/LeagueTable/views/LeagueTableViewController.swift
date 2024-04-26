@@ -53,6 +53,6 @@ class LeagueTableViewController: UITableViewController , LeagueProtocal{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print("mar3aaaaawy")
     }
 }

@@ -13,6 +13,7 @@ class CustomAppBar: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var appBarContainer: UIView!
+    @IBOutlet weak var favouriteBtn: UIButton!
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)

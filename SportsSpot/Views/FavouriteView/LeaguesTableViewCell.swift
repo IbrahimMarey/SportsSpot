@@ -28,7 +28,7 @@ class LeaguesTableViewCell: UITableViewCell {
         layer.borderWidth = 1
         layer.borderColor = UIColor(red: 67/255, green: 74/255, blue: 249/255, alpha: 1.0).cgColor
         layer.cornerRadius = 10
-        
+
     }
     
 }

@@ -26,6 +26,7 @@ class LeagueTableViewController: UITableViewController , LeagueProtocal{
     override func viewDidLoad() {
         super.viewDidLoad()
         indicator.center = view.center
+        indicator.color = UIColor.blue
         view.addSubview(indicator)
         indicator.startAnimating()
         let presenter = LeaguePresenter()
@@ -54,5 +55,12 @@ class LeagueTableViewController: UITableViewController , LeagueProtocal{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("mar3aaaaawy")
+        let detailsVC = DetailsViewController()
+        detailsVC.sport = sport!
+        detailsVC.leagueInfo = leagues[indexPath.row]
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
 }

@@ -24,10 +24,8 @@ class FavoutieViewController: UIViewController,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-       // serviceDataBase.insertLeague(League: leagueTest!)
         print("Test leage \(leagueTest?.country_name)\n")
         leaguesList = serviceDataBase.fetchingData()
-        //leaguesList.append(leagueTest!)
         showFavourites = leaguesList
     }
     func setup(){
@@ -37,6 +35,7 @@ class FavoutieViewController: UIViewController,UITableViewDataSource {
         tableView.register(cellNib, forCellReuseIdentifier: "cell")
         
         appBar.backBtn.isHidden = true
+        appBar.favouriteBtn.isHidden = true
         appBar.titleLabel.text = "Favourites"
         self.tableView.delegate = self
         self.tableView.dataSource = self

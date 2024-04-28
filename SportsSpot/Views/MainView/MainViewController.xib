@@ -19,9 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TDl-ie-KwU">
-                    <rect key="frame" x="16" y="363" width="361" height="455"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TDl-ie-KwU">
+                    <rect key="frame" x="16" y="229" width="361" height="589"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nOU-Vd-BUM">
                         <size key="itemSize" width="128" height="128"/>
@@ -33,6 +32,12 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="TDl-ie-KwU" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="85" id="Nq4-Bb-uKP"/>
+                <constraint firstItem="TDl-ie-KwU" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="f0c-jU-nxQ"/>
+                <constraint firstItem="TDl-ie-KwU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="nHs-OK-Stw"/>
+                <constraint firstItem="TDl-ie-KwU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="170" id="r2j-ky-Nvi"/>
+            </constraints>
             <point key="canvasLocation" x="46.564885496183201" y="20.422535211267608"/>
         </view>
     </objects>

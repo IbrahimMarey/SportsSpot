@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="appBarContainer" destination="iN0-l3-epB" id="wim-qV-FUa"/>
                 <outlet property="backBtn" destination="GXv-jh-JwQ" id="9qt-yE-NNn"/>
+                <outlet property="favouriteBtn" destination="yZF-LL-IhU" id="UOZ-Dd-hSa"/>
                 <outlet property="titleLabel" destination="owm-2J-rxJ" id="bi0-en-jYu"/>
             </connections>
         </placeholder>
@@ -33,6 +34,12 @@
                         <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                     </buttonConfiguration>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yZF-LL-IhU">
+                    <rect key="frame" x="327" y="31" width="49" height="39"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="fav_outLine"/>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -41,12 +48,15 @@
                 <constraint firstItem="owm-2J-rxJ" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" constant="7" id="9bP-Eo-mTq"/>
                 <constraint firstItem="GXv-jh-JwQ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-28" id="HWI-27-w7A"/>
                 <constraint firstItem="owm-2J-rxJ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-28.5" id="WmS-71-iMM"/>
+                <constraint firstItem="yZF-LL-IhU" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" constant="155" id="bU9-xa-CC2"/>
+                <constraint firstItem="yZF-LL-IhU" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" constant="-29" id="zic-za-cad"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="121" y="-11"/>
         </view>
     </objects>
     <resources>
+        <image name="fav_outLine" width="25" height="25"/>
         <image name="icons8-back-25" width="25" height="25"/>
     </resources>
 </document>

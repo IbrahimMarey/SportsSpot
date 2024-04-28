@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="matchesCell" id="gTV-IL-0wX" customClass="MatchesCollectionViewCell" customModule="SportsSpot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="113"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="359" height="113"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ssz-uo-D99">
+                        <rect key="frame" x="4" y="4" width="351" height="105"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Basktball" translatesAutoresizingMaskIntoConstraints="NO" id="xwF-ec-Mef">
+                                <rect key="frame" x="8" y="16" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Bum-4K-koV"/>
+                                    <constraint firstAttribute="width" constant="50" id="Y3u-cY-X7k"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anY-zP-uds">
+                                <rect key="frame" x="8" y="82" width="38.666666666666664" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="97L-Xh-GWw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="Basktball" translatesAutoresizingMaskIntoConstraints="NO" id="Dod-Sb-bl0">
+                                <rect key="frame" x="293" y="16" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Oij-ZL-hDN"/>
+                                    <constraint firstAttribute="width" constant="50" id="Ri2-W7-RNy"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvh-82-oT5">
+                                <rect key="frame" x="301.66666666666669" y="82" width="41.333333333333314" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="b7y-s1-b1h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20:30" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEa-C8-dmM">
+                                <rect key="frame" x="157" y="89" width="37.333333333333343" height="14"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8d-Mp-6tx">
+                                <rect key="frame" x="161.66666666666666" y="22" width="27.666666666666657" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Rtq-4e-keb"/>
+                                    <constraint firstAttribute="width" constant="27.670000000000002" id="hGb-48-cWg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 - 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byz-dE-Q3H">
+                                <rect key="frame" x="157.66666666666666" y="46" width="36" height="16"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021-05-18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7F-ig-7Bc">
+                                <rect key="frame" x="137.66666666666666" y="67" width="76" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="8B6-kc-jcB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="anY-zP-uds" firstAttribute="top" secondItem="xwF-ec-Mef" secondAttribute="bottom" constant="16" id="3zK-E5-CKg"/>
+                            <constraint firstItem="xwF-ec-Mef" firstAttribute="top" secondItem="Ssz-uo-D99" secondAttribute="top" constant="16" id="4eG-3N-WJf"/>
+                            <constraint firstItem="EEa-C8-dmM" firstAttribute="centerX" secondItem="Ssz-uo-D99" secondAttribute="centerX" id="4ya-k4-oZ0"/>
+                            <constraint firstAttribute="trailing" secondItem="Dod-Sb-bl0" secondAttribute="trailing" constant="8" id="5Ba-dO-x4p"/>
+                            <constraint firstItem="g8d-Mp-6tx" firstAttribute="centerX" secondItem="Ssz-uo-D99" secondAttribute="centerX" id="7XT-ME-jag"/>
+                            <constraint firstItem="xwF-ec-Mef" firstAttribute="leading" secondItem="Ssz-uo-D99" secondAttribute="leading" constant="8" id="HVB-ta-Bb2"/>
+                            <constraint firstItem="K7F-ig-7Bc" firstAttribute="top" secondItem="g8d-Mp-6tx" secondAttribute="top" constant="45" id="IvT-Xz-Tgb"/>
+                            <constraint firstItem="tvh-82-oT5" firstAttribute="top" secondItem="Dod-Sb-bl0" secondAttribute="bottom" constant="16" id="YUh-2X-aJA"/>
+                            <constraint firstItem="K7F-ig-7Bc" firstAttribute="centerX" secondItem="Ssz-uo-D99" secondAttribute="centerX" id="cdn-lw-BS5"/>
+                            <constraint firstItem="EEa-C8-dmM" firstAttribute="top" secondItem="K7F-ig-7Bc" secondAttribute="top" constant="22" id="eVk-8k-5ru"/>
+                            <constraint firstItem="g8d-Mp-6tx" firstAttribute="top" secondItem="Ssz-uo-D99" secondAttribute="top" constant="22" id="gnP-0z-qcy"/>
+                            <constraint firstItem="byz-dE-Q3H" firstAttribute="top" secondItem="g8d-Mp-6tx" secondAttribute="bottom" constant="4" id="lVO-9p-UPg"/>
+                            <constraint firstItem="byz-dE-Q3H" firstAttribute="centerX" secondItem="Ssz-uo-D99" secondAttribute="centerX" id="m1L-QJ-gP8"/>
+                            <constraint firstItem="anY-zP-uds" firstAttribute="leading" secondItem="Ssz-uo-D99" secondAttribute="leading" constant="8" id="mB1-kv-aiU"/>
+                            <constraint firstAttribute="trailing" secondItem="tvh-82-oT5" secondAttribute="trailing" constant="8" id="pW4-8u-UZ4"/>
+                            <constraint firstItem="Dod-Sb-bl0" firstAttribute="top" secondItem="Ssz-uo-D99" secondAttribute="top" constant="16" id="s31-J4-NO1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Ssz-uo-D99" secondAttribute="bottom" constant="4" id="6fx-0V-vq1"/>
+                <constraint firstItem="Ssz-uo-D99" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="Gas-Sm-yRD"/>
+                <constraint firstItem="Ssz-uo-D99" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="OSK-AS-X0h"/>
+                <constraint firstAttribute="trailing" secondItem="Ssz-uo-D99" secondAttribute="trailing" constant="4" id="mU6-VH-OKl"/>
+            </constraints>
+            <size key="customSize" width="357" height="113"/>
+            <connections>
+                <outlet property="awayTeamImg" destination="Dod-Sb-bl0" id="7sV-sX-ARO"/>
+                <outlet property="awayTeamLabel" destination="tvh-82-oT5" id="srQ-Xc-bAc"/>
+                <outlet property="dateLabel" destination="K7F-ig-7Bc" id="x3Q-3f-OsS"/>
+                <outlet property="homeTeamImg" destination="xwF-ec-Mef" id="0ko-C3-A5k"/>
+                <outlet property="homeTeamLabel" destination="anY-zP-uds" id="xVv-Pv-K2E"/>
+                <outlet property="scoreLabel" destination="byz-dE-Q3H" id="dJ4-yY-SUk"/>
+                <outlet property="timeLabel" destination="EEa-C8-dmM" id="oCo-vs-Ph4"/>
+                <outlet property="viewBorder" destination="Ssz-uo-D99" id="ZNp-EG-xJW"/>
+            </connections>
+            <point key="canvasLocation" x="214.50381679389312" y="10.211267605633804"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Basktball" width="512" height="512"/>
+    </resources>
+</document>

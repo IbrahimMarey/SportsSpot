@@ -15,7 +15,7 @@ class DetailsViewController: UIViewController, DetailsProtocol{
     
     var upComingMatches = [FixturesDto]()
     var latestMatches = [FixturesDto]()
-    var teamsList = [Int]()
+    var teamsList = [TeamDto]()
     
     var indicator = UIActivityIndicatorView(style: .large)
     
@@ -40,8 +40,11 @@ class DetailsViewController: UIViewController, DetailsProtocol{
         }
     }
     
-    func fetchTeams() {
-        //teamsList [TeamsModel]
+    func fetchTeams(teams:[TeamDto]) {
+        self.teamsList = teams
+        DispatchQueue.main.async{
+            self.collectionView.reloadData()
+        }
     }
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -123,6 +126,7 @@ class DetailsViewController: UIViewController, DetailsProtocol{
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 15
         , bottom: 10, trailing: 0)
         section.orthogonalScrollingBehavior = .continuous
+        
         return section
     }
     func callForData(){
@@ -130,5 +134,6 @@ class DetailsViewController: UIViewController, DetailsProtocol{
         presenter.attachView(v: self)
         presenter.fetchUpcomingMatches(sport: sport!.lowercased(),leagueId:(leagueInfo?.league_key!)!)
         presenter.fetchLatestMatches(sport: sport!.lowercased(), leagueId: (leagueInfo?.league_key!)!)
+        presenter.fetchLeagueTeams(sport: sport!.lowercased(), leagueId: (leagueInfo?.league_key!)!)
     }
 }

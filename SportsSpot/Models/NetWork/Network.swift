@@ -26,15 +26,11 @@ class Network  {
                 do{
                     let jsonData = try JSONDecoder().decode(LeagueDto.self, from: data!)
                     completion(.success(jsonData))
-                    
-                  
                 } catch {
-                    print(error.localizedDescription)
                     completion(.failure(error))
 
                 }
             case .failure(let error):
-                print(error.localizedDescription)
                 completion(.failure(error))
 
             }
@@ -55,27 +51,102 @@ class Network  {
             case .success(let data):
                 do{
                     let jsonData = try JSONDecoder().decode(FixturesResult.self, from: data!)
-                    print(jsonData.result?.count)
                     completion(.success(jsonData))
                     //print(jsonData.result)
                 } catch {
-                    print(error.localizedDescription)
                     completion(.failure(error))
 
                 }
             case .failure(let error):
-                print(error.localizedDescription)
                 completion(.failure(error))
 
             }
         }
     }
-    func fetchFixturesLatestMatches(sport:String,leagueID:Int,completion:@escaping(Result<FixturesResult,Error>) -> Void){
-        //from current Data - 15 to current Data -1
+    func fetchFixturesLatestMatches(sport: String, leagueID: Int, completion: @escaping (Result<FixturesResult, Error>) -> Void) {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // Get the previous day's date
+        if let previousDate = calendar.date(byAdding: .day, value: -1, to: currentDate) {
+            let previousDateFormatted = dateFormatter.string(from: previousDate)
+            print(previousDateFormatted)
+            
+            // Get the date after 15 days
+            if let futureDate = calendar.date(byAdding: .day, value: 15, to: currentDate) {
+                let futureDateFormatted = dateFormatter.string(from: futureDate)
+                print(futureDateFormatted)
+                let urlString = "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&APIkey=\(apiKey)&leagueId=\(leagueID)&from=\(previousDateFormatted)&to=\(futureDateFormatted)"
+                
+                if let url = URL(string: urlString) {
+                    AF.request(url).validate().response { response in
+                        switch response.result {
+                        case .success(let data):
+                            do {
+                                let jsonData = try JSONDecoder().decode(FixturesResult.self, from: data!)
+                                completion(.success(jsonData))
+                            } catch {
+                                completion(.failure(error))
+                            }
+                        case .failure(let error):
+                            completion(.failure(error))
+                        }
+                    }
+                } else {
+                    let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])
+                    completion(.failure(error))
+                }
+            }
+        }
     }
-    func fetchLeaguesTeams(sport:String,leagueID:Int,completion:@escaping(Result<FixturesResult,Error>) -> Void){
+    func fetchLeaguesTeams(sport:String,leagueID:Int,completion:@escaping(Result<TeamResponse,Error>) -> Void){
         //https://apiv2.allsportsapi.com/football/?&met=Teams&leagueId=96&APIkey=6c1c88500e41b80918d93cf0cf1dfaa81b7cb613452241ab62f48a103781099e
-
-
+        let urlString = "https://apiv2.allsportsapi.com/\(sport)/?&met=Teams&leagueId=\(leagueID)&APIkey=\(apiKey)"
+        
+        if let url = URL(string: urlString) {
+            AF.request(url).validate().response{response in
+                switch response.result{
+                case .success(let data):
+                    do {
+                        let jsonData = try JSONDecoder().decode(TeamResponse.self, from: data!)
+                        print(jsonData.result?.count)
+                        completion(.success(jsonData))
+                    } catch {
+                        print(error.localizedDescription)
+                        completion(.failure(error))
+                    }
+                case .failure(let error ):
+                    completion(.failure(error))
+                }
+                
+            }
+        }
     }
+    
+    //https://apiv2.allsportsapi.com/football/?&met=Teams&teamId=96&APIkey=6c1c88500e41b80918d93cf0cf1dfaa81b7cb613452241ab62f48a103781099e
+    func fetchTeam(sport:String,teamID:Int,completion:@escaping(Result<TeamResponse,Error>) -> Void){
+        
+        let urlString = "https://apiv2.allsportsapi.com/\(sport)/?&met=Teams&teamId=\(teamID)&APIkey=\(apiKey)"
+        
+        if let url = URL(string: urlString) {
+            AF.request(url).validate().response{response in
+                switch response.result{
+                case .success(let data):
+                    do {
+                        let jsonData = try JSONDecoder().decode(TeamResponse.self, from: data!)
+                        completion(.success(jsonData))
+                    } catch {
+                        print(error.localizedDescription)
+                        completion(.failure(error))
+                    }
+                case .failure(let error ):
+                    completion(.failure(error))
+                }
+                
+            }
+        }
+    }
+    
 }

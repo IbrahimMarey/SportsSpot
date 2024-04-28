@@ -49,8 +49,17 @@ class DetailsPresenter{
         }
     }
     func fetchLeagueTeams(sport:String, leagueId:Int){
-//        Network.shared.fetchLeaguesTeams(sport: sport, leagueID: leagueId) { <#Result<FixturesResult, Error>#> in
-//            <#code#>
-//        }
+        Network.shared.fetchLeaguesTeams(sport: sport, leagueID: leagueId) { resulte in
+            switch resulte {
+                case .success(let done):
+                print(".success")
+                self.detailsVC?.fetchTeams(teams: done.result ?? [])
+                print("self.detailsVC?.fetchTeams the result count =============\(done.result?.count)")
+                case .failure(let err):
+                self.detailsVC?.failure(msg: err.localizedDescription)
+                    print("error ======================= \(err.localizedDescription)")
+            }
+            print("After presenter ")
+        }
     }
 }

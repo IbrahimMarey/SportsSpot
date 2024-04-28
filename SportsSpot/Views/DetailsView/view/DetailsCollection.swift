@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import Kingfisher
 extension DetailsViewController: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     
@@ -38,9 +38,12 @@ extension DetailsViewController: UICollectionViewDelegate,UICollectionViewDataSo
                 cell = matchCell
             case 2:
                 let teamCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TeamCollectionViewCell
-                teamCell.teamImg.image = UIImage(named: "Basktball")
-                //show teamsData
-                cell = teamCell
+            teamCell.teamLabel.text = teamsList[indexPath.row].teamName
+            KF.url(URL(string: teamsList[indexPath.row].teamLogo ?? ""))
+                        .placeholder(UIImage(named: "Basktball"))
+                        .set(to: teamCell.teamImg)
+
+            cell = teamCell
             
             default:
                 break
@@ -68,6 +71,19 @@ extension DetailsViewController: UICollectionViewDelegate,UICollectionViewDataSo
         }
         
         matchCell.scoreLabel.text = m.event_final_result
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.section{
+            case 2:
+            let teamDetailsView = TeamDetailsView()
+            teamDetailsView.sport = self.sport
+            teamDetailsView.teamId = teamsList[indexPath.row].teamKey
+            
+            self.navigationController?.pushViewController(teamDetailsView, animated: true)
+            default:
+                break
+        }
     }
     
 }

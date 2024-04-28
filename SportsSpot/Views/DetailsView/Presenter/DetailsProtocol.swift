@@ -14,5 +14,5 @@ protocol DetailsProtocol{
     func fetchUpCommingMatches(sports:[FixturesDto])
     func failure(msg:String)
     func fetchLatestMatches(sports:[FixturesDto])
-    func fetchTeams()
+    func fetchTeams(teams:[TeamDto])
 }

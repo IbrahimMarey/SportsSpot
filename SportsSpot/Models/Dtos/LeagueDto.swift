@@ -14,6 +14,7 @@ struct MyLeagueDto: Codable {
     let country_name: String?
     let league_logo: String?
     let country_logo: String?
+    let sportName :String?
 }
 
 struct LeagueDto :Codable {

@@ -4,5 +4,6 @@
         <attribute name="league_key" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="league_logo" optional="YES" attributeType="String"/>
         <attribute name="league_name" optional="YES" attributeType="String"/>
+        <attribute name="sport_name" optional="YES" attributeType="String"/>
     </entity>
 </model>

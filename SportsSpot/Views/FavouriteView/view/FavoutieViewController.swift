@@ -8,8 +8,7 @@
 import UIKit
 import SDWebImage
 
-class FavoutieViewController: UIViewController,UITableViewDataSource {
-    
+class FavoutieViewController: UIViewController,UITableViewDataSource,FavouriteProtocol {
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -18,19 +17,22 @@ class FavoutieViewController: UIViewController,UITableViewDataSource {
     
     var serviceDataBase:CoreDataProtocol = CoreDataImple.shared
     var showFavourites = [MyLeagueDto]()
-    var leaguesList = [MyLeagueDto]()
-    var leagueTest : MyLeagueDto?
+    var leaguesList: [MyLeagueDto]?
+    
+    var presenter = FavouritePresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        print("Test leage \(leagueTest?.country_name)\n")
-        leaguesList = serviceDataBase.fetchingData()
-        showFavourites = leaguesList
+        presenter.attachView(vc: self)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+       // leaguesList = serviceDataBase.fetchingData()
+        presenter.getDataFromCoreData()
+    }
+    
     func setup(){
-       // Bundle.main.loadNibNamed("CustomAppBar", owner: self)
-       // self.addChild(UI)
         let cellNib = UINib(nibName: "LeaguesTableViewCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: "cell")
         
@@ -41,25 +43,37 @@ class FavoutieViewController: UIViewController,UITableViewDataSource {
         self.tableView.dataSource = self
         self.searchTF.delegate = self
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaguesTableViewCell
         cell.leagueLabel?.text = showFavourites[indexPath.row].league_name
         cell.leageuImage.sd_setImage(with: URL(string: showFavourites[indexPath.row].league_logo!),placeholderImage: UIImage(named: "images"))
-        //cell.separatorInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
+        cell.separatorInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
 
         return cell
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return showFavourites.count
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Favourite"
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
     
+    func getDataFromCoreData() {
+        showFavourites = leaguesList ?? []
+        tableView.reloadData()
+    }
+    func deleteFromCoreData() {
+        presenter.getDataFromCoreData()
+    }
 }

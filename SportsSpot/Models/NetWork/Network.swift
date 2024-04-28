@@ -70,14 +70,14 @@ class Network  {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         // Get the previous day's date
-        if let previousDate = calendar.date(byAdding: .day, value: -1, to: currentDate) {
-            let previousDateFormatted = dateFormatter.string(from: previousDate)
-            print(previousDateFormatted)
+        if let futureDate = calendar.date(byAdding: .day, value: -1, to: currentDate) {
+            let futureDateFormatted = dateFormatter.string(from: futureDate)
+            print(futureDateFormatted)
             
             // Get the date after 15 days
-            if let futureDate = calendar.date(byAdding: .day, value: 15, to: currentDate) {
-                let futureDateFormatted = dateFormatter.string(from: futureDate)
-                print(futureDateFormatted)
+            if let previousDate = calendar.date(byAdding: .day, value: -15, to: currentDate) {
+                let previousDateFormatted = dateFormatter.string(from: previousDate)
+                print(previousDateFormatted)
                 let urlString = "https://apiv2.allsportsapi.com/\(sport)/?met=Fixtures&APIkey=\(apiKey)&leagueId=\(leagueID)&from=\(previousDateFormatted)&to=\(futureDateFormatted)"
                 
                 if let url = URL(string: urlString) {

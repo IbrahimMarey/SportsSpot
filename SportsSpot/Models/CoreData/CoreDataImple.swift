@@ -17,7 +17,7 @@ enum LeagueKeys: String {
     case leagueLogo = "league_logo"
     case countryLogo = "country_logo"
     case countryName = "country_name"
-    
+    case sportName = "sport_name"
 }
 
 class CoreDataImple: CoreDataProtocol {
@@ -35,14 +35,20 @@ class CoreDataImple: CoreDataProtocol {
         do{
             let leagues = try context.fetch(fetchRequest)
             for l in leagues{
+                var lLogo :String!
                 if let lKey = l.value(forKey: LeagueKeys.leagueKey.rawValue) as? Int,
                    let lName = l.value(forKey: LeagueKeys.leagueName.rawValue) as? String,
-                   let lLogo = l.value(forKey: LeagueKeys.leagueLogo.rawValue) as? String
+                   let lSport = l.value(forKey: LeagueKeys.sportName.rawValue) as? String
                    {
-                    let league = MyLeagueDto(league_key: lKey, league_name: lName, country_key: nil, country_name: nil, league_logo: lLogo, country_logo: nil)
+                    if let leagueLogo = l.value(forKey: LeagueKeys.leagueLogo.rawValue) as? String {
+                        lLogo = leagueLogo
+                    }else{
+                        lLogo = ""
+                    }
+                    let league = MyLeagueDto(league_key: lKey, league_name: lName, country_key: nil, country_name: nil, league_logo: lLogo, country_logo: nil,sportName: lSport)
                     leaguesList.append(league)
                 }else{
-                    print("The League key \(l.value(forKey: LeagueKeys.leagueKey.rawValue))\n LName \(l.value(forKey: LeagueKeys.leagueName.rawValue)) \n L Logo \(l.value(forKey: LeagueKeys.leagueLogo.rawValue))   is nil core date.\n")
+                    print("The League key \(l.value(forKey: LeagueKeys.leagueKey.rawValue))\n LName \(l.value(forKey: LeagueKeys.leagueName.rawValue)) \n L Logo \(l.value(forKey: LeagueKeys.leagueLogo.rawValue)) \n \(l.value(forKey: LeagueKeys.sportName.rawValue))   is nil core date.\n")
                     
                 }
             }
@@ -63,6 +69,7 @@ class CoreDataImple: CoreDataProtocol {
         league.setValue(l.league_key, forKey: LeagueKeys.leagueKey.rawValue)
         league.setValue(l.league_name, forKey: LeagueKeys.leagueName.rawValue)
         league.setValue(l.league_logo, forKey: LeagueKeys.leagueLogo.rawValue)
+        league.setValue(l.sportName, forKey: LeagueKeys.sportName.rawValue)
         
         do{
             try context.save()
@@ -74,7 +81,8 @@ class CoreDataImple: CoreDataProtocol {
     
     func deleteLeague(League l: MyLeagueDto) {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: entityName)
-        fetchRequest.predicate = NSPredicate(format: "\(LeagueKeys.leagueKey.rawValue)", l.league_key!)
+        print("LEaguf key in delete core Data \(l.league_key)")
+        fetchRequest.predicate = NSPredicate(format: "league_key == %d", l.league_key!)
         do {
             let leagues = try context.fetch(fetchRequest)
             if let leagueToDelete = leagues.first {
@@ -88,5 +96,11 @@ class CoreDataImple: CoreDataProtocol {
         }
     }
     
+    func searchLeague(League l: MyLeagueDto) -> Bool {
+        let allLeague = self.fetchingData()
+       return allLeague.contains { le in
+           return le.league_key == l.league_key
+        }
+    }
     
 }

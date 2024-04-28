@@ -77,7 +77,7 @@ extension DetailsViewController: UICollectionViewDelegate,UICollectionViewDataSo
         switch indexPath.section{
             case 2:
             let teamDetailsView = TeamDetailsView()
-            teamDetailsView.sport = self.sport
+            teamDetailsView.sport = league?.sportName?.lowercased()
             teamDetailsView.teamId = teamsList[indexPath.row].teamKey
             
             self.navigationController?.pushViewController(teamDetailsView, animated: true)

@@ -32,9 +32,6 @@ class DetailsPresenter{
     }
     
     func fetchLatestMatches(sport:String,leagueId:Int){
-//        let calendar = Calendar.current
-//        let currentDate = Date()
-//        let modifiedDate = calendar.date(byAdding: .day, value: -15, to: currentDate)
         Network.shared.fetchFixturesLatestMatches(sport: sport, leagueID: leagueId){ resulte in
             switch resulte {
                 case .success(let done):
@@ -61,5 +58,16 @@ class DetailsPresenter{
             }
             print("After presenter ")
         }
+    }
+    
+    func insertToCoreData(leagueInfo:MyLeagueDto){
+        
+        CoreDataImple.shared.insertLeague(League: leagueInfo)
+    }
+    func isLeagueFavourite(league:MyLeagueDto)->Bool{
+        return CoreDataImple.shared.searchLeague(League: league)
+    }
+    func deleteFromFavourite(league:MyLeagueDto){
+        CoreDataImple.shared.deleteLeague(League: league)
     }
 }

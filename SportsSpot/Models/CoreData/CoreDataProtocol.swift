@@ -11,4 +11,5 @@ protocol CoreDataProtocol{
     func fetchingData() -> [MyLeagueDto]
     func insertLeague(League l:MyLeagueDto) -> Void
     func deleteLeague(League l:MyLeagueDto) -> Void
+    func searchLeague(League l:MyLeagueDto) -> Bool
 }

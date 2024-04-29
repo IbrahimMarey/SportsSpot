@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class TeamDetailsView: UIViewController, TeamDetailsProtocal {
     var players = [Player]()
@@ -26,7 +27,11 @@ class TeamDetailsView: UIViewController, TeamDetailsProtocal {
     }
     
     func failure(msg: String) {
-        
+        DispatchQueue.main.async {
+            PKHUD.sharedHUD.contentView = PKHUDTextView(text: msg)
+            PKHUD.sharedHUD.show()
+            PKHUD.sharedHUD.hide(afterDelay: 2.0)
+        }
     }
 
     override func viewDidLoad() {

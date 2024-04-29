@@ -40,7 +40,7 @@ extension DetailsViewController: UICollectionViewDelegate,UICollectionViewDataSo
                 let teamCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TeamCollectionViewCell
             teamCell.teamLabel.text = teamsList[indexPath.row].teamName
             KF.url(URL(string: teamsList[indexPath.row].teamLogo ?? ""))
-                        .placeholder(UIImage(named: "Basktball"))
+                        .placeholder(UIImage(named: "playstore"))
                         .set(to: teamCell.teamImg)
 
             cell = teamCell

@@ -55,7 +55,7 @@ class LeagueTableViewController: UITableViewController , LeagueProtocal{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! LeaguesTableViewCell
         cell.leagueLabel.text = leagues[indexPath.row].league_name
-        cell.leageuImage.sd_setImage(with: URL(string: leagues[indexPath.row].league_logo ?? ""), placeholderImage: UIImage(named: "Football"))
+        cell.leageuImage.sd_setImage(with: URL(string: leagues[indexPath.row].league_logo ?? ""), placeholderImage: UIImage(named: "playstore"))
         return cell
     }
     

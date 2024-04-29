@@ -12,5 +12,6 @@ target 'SportsSpot' do
   pod 'SwiftyOnboard'
   pod 'SplashScreen'
   pod 'ReachabilitySwift'
+  pod 'PKHUD'
 
 end

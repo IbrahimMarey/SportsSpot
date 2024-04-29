@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class DetailsViewController: UIViewController{
     let presenter = DetailsPresenter()
@@ -50,9 +51,53 @@ class DetailsViewController: UIViewController{
         collectionView.register(UINib(nibName: "MatchesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "matchesCell")
         collectionView.register(UINib(nibName: "TeamCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "Cell")
         
+        collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
         appBar.backBtn.addTarget(self, action: #selector(goBack), for: .touchUpInside)
         appBar.favouriteBtn.addTarget(self, action: #selector(favouriteBtn), for: .touchUpInside)
+        
+        indicator.center = view.center
+        indicator.color = UIColor.blue
+        view.addSubview(indicator)
+        indicator.startAnimating()
     }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+           guard kind == UICollectionView.elementKindSectionHeader else {
+               return UICollectionReusableView()
+           }
+           
+           let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! SectionHeaderView
+           
+           // Customize the header view based on the section
+           switch indexPath.section {
+           case 0:
+               if upComingMatches.count == 0{
+                   headerView.titleLabel.text = "No Upcoming Matches"
+               }else{
+                   headerView.titleLabel.text = "Upcoming Matches"
+               }
+           case 1:
+               if latestMatches.count == 0 {
+                   headerView.titleLabel.text = "No Latest Matches"
+
+               }else{
+                   headerView.titleLabel.text = "Latest Matches"
+               }
+           case 2:
+               if teamsList.count == 0 {
+                   headerView.titleLabel.text = "No Teams"
+               }else{
+                   headerView.titleLabel.text = "Teams"
+               }
+           default:
+               headerView.titleLabel.text = ""
+           }
+           
+           return headerView
+       }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+            return CGSize(width: collectionView.bounds.width, height: 50)
+        }
     
     func setUpLayouts(){
         let layout = UICollectionViewCompositionalLayout{ sectionIndex, enviroment in
@@ -80,6 +125,10 @@ class DetailsViewController: UIViewController{
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 10, trailing: 0)
         section.orthogonalScrollingBehavior = .continuous
 
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+                        let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+                        
+                        section.boundarySupplementaryItems = [headerSupplementary]
         return section
     }
     
@@ -93,7 +142,10 @@ class DetailsViewController: UIViewController{
            let section = NSCollectionLayoutSection(group: group)
            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15)
            //section.orthogonalScrollingBehavior = .continuous
-        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+                        let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+                        
+                        section.boundarySupplementaryItems = [headerSupplementary]
         return section
     }
     
@@ -113,7 +165,10 @@ class DetailsViewController: UIViewController{
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 15
         , bottom: 10, trailing: 0)
         section.orthogonalScrollingBehavior = .continuous
-        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(50))
+                        let headerSupplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+                        
+                        section.boundarySupplementaryItems = [headerSupplementary]
         return section
     }
     
@@ -122,7 +177,6 @@ class DetailsViewController: UIViewController{
     }
     @objc func favouriteBtn(){
         guard let league = league else {
-            print("league info nil")
             return
         }
         //league = MyLeagueDto(league_key: leagueInfo.league_key, league_name: leagueInfo.league_name, country_key: leagueInfo.country_key, country_name: leagueInfo.country_name, league_logo: leagueInfo.league_logo, country_logo: leagueInfo.country_logo, sportName: sport)
@@ -150,24 +204,30 @@ class DetailsViewController: UIViewController{
 extension DetailsViewController: DetailsProtocol{
     
     func fetchUpCommingMatches(sports: [FixturesDto]) {
-        print("Sport count details \(sports.count)\n")
         self.upComingMatches = sports;
         DispatchQueue.main.async{
             self.collectionView.reloadData()
         }
+        self.indicator.stopAnimating()
+
     }
     
     func failure(msg: String) {
-        print("Failed\n")
+        DispatchQueue.main.async {
+            PKHUD.sharedHUD.contentView = PKHUDTextView(text: msg)
+            PKHUD.sharedHUD.show()
+            PKHUD.sharedHUD.hide(afterDelay: 2.0)
+        }
+        self.indicator.stopAnimating()
         
     }
     
     func fetchLatestMatches(sports:[FixturesDto]) {
-        print("Sport count details \(sports.count)\n")
         self.latestMatches = sports;
         DispatchQueue.main.async{
             self.collectionView.reloadData()
         }
+        self.indicator.stopAnimating()
     }
     
     func fetchTeams(teams:[TeamDto]) {
@@ -175,6 +235,8 @@ extension DetailsViewController: DetailsProtocol{
         DispatchQueue.main.async{
             self.collectionView.reloadData()
         }
+        self.indicator.stopAnimating()
+
     }
     func callForData(){
         

@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import PKHUD
 import SDWebImage
+
 class LeagueTableViewController: UITableViewController , LeagueProtocal{
     var sport: String?
     
     func failure(msg: String) {
         indicator.stopAnimating()
+        DispatchQueue.main.async {
+            PKHUD.sharedHUD.contentView = PKHUDTextView(text: msg)
+            PKHUD.sharedHUD.show()
+            PKHUD.sharedHUD.hide(afterDelay: 2.0)
+        }
     }
     
     func featchLeague(leagues: [MyLeagueDto]) {
@@ -55,12 +62,11 @@ class LeagueTableViewController: UITableViewController , LeagueProtocal{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)  as! LeaguesTableViewCell
         cell.leagueLabel.text = leagues[indexPath.row].league_name
-        cell.leageuImage.sd_setImage(with: URL(string: leagues[indexPath.row].league_logo ?? ""), placeholderImage: UIImage(named: "Football"))
+        cell.leageuImage.sd_setImage(with: URL(string: leagues[indexPath.row].league_logo ?? ""), placeholderImage: UIImage(named: "playstore"))
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("mar3aaaaawy")
         let detailsVC = DetailsViewController()
         let l = leagues[indexPath.row]
         detailsVC.league = MyLeagueDto(league_key: l.league_key, league_name: l.league_name, country_key: l.country_key, country_name: l.country_name, league_logo: l.league_logo, country_logo: l.country_logo, sportName: sport!)

@@ -20,16 +20,19 @@ class FavoutieViewController: UIViewController,UITableViewDataSource,FavouritePr
     var leaguesList: [MyLeagueDto]?
     
     var presenter = FavouritePresenter()
+    var networkPresenter :NetworkManager?
+    var isConnected:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        presenter.attachView(vc: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-       // leaguesList = serviceDataBase.fetchingData()
+        navigationController?.isNavigationBarHidden = true
+        presenter.attachView(vc: self)
         presenter.getDataFromCoreData()
+        networkPresenter = NetworkManager(vc: self)
     }
     
     func setup(){

@@ -15,7 +15,7 @@ class TeamCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         viewBorder.layer.borderWidth = 1
-        viewBorder.layer.borderColor = UIColor(red: 67/255, green: 74/255, blue: 249/255, alpha: 1.0).cgColor
+        viewBorder.layer.borderColor = UIColor(named: "primaryColor")?.cgColor
         viewBorder.layer.cornerRadius = 10
     }
 

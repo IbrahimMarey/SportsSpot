@@ -29,7 +29,7 @@ class MatchesCollectionViewCell: UICollectionViewCell {
         homeTeamImg.layer.cornerRadius = homeTeamImg.frame.width / 2
         homeTeamImg.clipsToBounds = true
         viewBorder.layer.borderWidth = 1
-        viewBorder.layer.borderColor = UIColor(red: 67/255, green: 74/255, blue: 249/255, alpha: 1.0).cgColor
+        viewBorder.layer.borderColor = UIColor(named: "primaryColor")?.cgColor
         viewBorder.layer.cornerRadius = 10
     }
 

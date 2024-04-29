@@ -22,4 +22,11 @@ class Util{
         alert.addAction(cancel)
         return alert
     }
+    static func createConnectionAlert()->UIAlertController{
+        let alert = UIAlertController(title: "No Connection",message: "please check your connection!" , preferredStyle: .alert)
+        let okBtn = UIAlertAction(title: "Ok", style: .default)
+        okBtn.setValue(UIColor(red: 67/255, green: 74/255, blue: 249/255, alpha: 1.0), forKey: "titleTextColor")
+        alert.addAction(okBtn)
+        return alert
+    }
 }

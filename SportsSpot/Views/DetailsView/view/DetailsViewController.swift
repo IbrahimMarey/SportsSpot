@@ -148,6 +148,7 @@ class DetailsViewController: UIViewController{
 
 
 extension DetailsViewController: DetailsProtocol{
+    
     func fetchUpCommingMatches(sports: [FixturesDto]) {
         print("Sport count details \(sports.count)\n")
         self.upComingMatches = sports;

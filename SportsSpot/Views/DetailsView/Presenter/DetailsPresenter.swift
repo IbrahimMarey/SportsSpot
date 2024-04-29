@@ -8,6 +8,7 @@
 import Foundation
 
 class DetailsPresenter{
+    
     var detailsVC : DetailsProtocol?
     
     func attachView(v:DetailsProtocol){

@@ -21,6 +21,7 @@
 		038390842BDED79100DF7DF6 /* FavouriteProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038390832BDED79100DF7DF6 /* FavouriteProtocol.swift */; };
 		039C20452BD8A1B100597170 /* CustomAppBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039C20442BD8A1B100597170 /* CustomAppBar.xib */; };
 		039C20472BD8A97800597170 /* FavouriteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C20462BD8A97800597170 /* FavouriteTableView.swift */; };
+		03A8E9FC2BDFEA9E0052DF9C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8E9FB2BDFEA9E0052DF9C /* NetworkManager.swift */; };
 		03D8434C2BDD1C5E00F48CA1 /* DetailsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D8434B2BDD1C5E00F48CA1 /* DetailsCollection.swift */; };
 		03D843512BDD1E4200F48CA1 /* MatchesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D8434F2BDD1E4200F48CA1 /* MatchesCollectionViewCell.swift */; };
 		03D843522BDD1E4200F48CA1 /* MatchesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03D843502BDD1E4200F48CA1 /* MatchesCollectionViewCell.xib */; };
@@ -70,6 +71,7 @@
 		038390832BDED79100DF7DF6 /* FavouriteProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteProtocol.swift; sourceTree = "<group>"; };
 		039C20442BD8A1B100597170 /* CustomAppBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomAppBar.xib; sourceTree = "<group>"; };
 		039C20462BD8A97800597170 /* FavouriteTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteTableView.swift; sourceTree = "<group>"; };
+		03A8E9FB2BDFEA9E0052DF9C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		03D8434B2BDD1C5E00F48CA1 /* DetailsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollection.swift; sourceTree = "<group>"; };
 		03D8434F2BDD1E4200F48CA1 /* MatchesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesCollectionViewCell.swift; sourceTree = "<group>"; };
 		03D843502BDD1E4200F48CA1 /* MatchesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchesCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -168,6 +170,27 @@
 				0375B9782BD8B03C00CDBFC2 /* CoreDataImple.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		03A8E9FD2BDFF0130052DF9C /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				03A8E9FB2BDFEA9E0052DF9C /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		03A8EA002BE005400052DF9C /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				A7E45EEB2BD6DB3100096F05 /* AppDelegate.swift */,
+				A7E45EED2BD6DB3100096F05 /* SceneDelegate.swift */,
+				A7E45EF72BD6DB3400096F05 /* Assets.xcassets */,
+				A7E45EF92BD6DB3400096F05 /* LaunchScreen.storyboard */,
+				A7E45EF42BD6DB3100096F05 /* SportsSpot.xcdatamodeld */,
+				03DF1B812BDEAE100096A748 /* Util.swift */,
+			);
+			path = Utilites;
 			sourceTree = "<group>";
 		};
 		03DF1B832BDED4E60096A748 /* view */ = {
@@ -294,15 +317,10 @@
 		A7E45EEA2BD6DB3100096F05 /* SportsSpot */ = {
 			isa = PBXGroup;
 			children = (
+				03A8EA002BE005400052DF9C /* Utilites */,
 				A7E45F052BD6DDB600096F05 /* Models */,
 				A7E45F042BD6DDA600096F05 /* Views */,
-				A7E45EEB2BD6DB3100096F05 /* AppDelegate.swift */,
-				A7E45EED2BD6DB3100096F05 /* SceneDelegate.swift */,
-				A7E45EF72BD6DB3400096F05 /* Assets.xcassets */,
-				A7E45EF92BD6DB3400096F05 /* LaunchScreen.storyboard */,
 				A7E45EFC2BD6DB3400096F05 /* Info.plist */,
-				A7E45EF42BD6DB3100096F05 /* SportsSpot.xcdatamodeld */,
-				03DF1B812BDEAE100096A748 /* Util.swift */,
 			);
 			path = SportsSpot;
 			sourceTree = "<group>";
@@ -310,6 +328,7 @@
 		A7E45F022BD6DD5800096F05 /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
+				03A8E9FD2BDFF0130052DF9C /* NetworkManager */,
 				A72719722BD6F3AE00F0328D /* Network.swift */,
 			);
 			path = NetWork;
@@ -500,6 +519,7 @@
 				038390822BDED77300DF7DF6 /* FavouritePresenter.swift in Sources */,
 				A7E45EEC2BD6DB3100096F05 /* AppDelegate.swift in Sources */,
 				A769988C2BDADAB100820FBA /* LeaguePresenter.swift in Sources */,
+				03A8E9FC2BDFEA9E0052DF9C /* NetworkManager.swift in Sources */,
 				A72719702BD6F1B600F0328D /* TestNavViewController.swift in Sources */,
 				A76F00AD2BDE80320024CD91 /* TeamDetailsView.swift in Sources */,
 				A72719752BD6FA2700F0328D /* FixturesDto.swift in Sources */,
@@ -658,6 +678,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SportsSpot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sport Spot";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -685,6 +706,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SportsSpot/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sport Spot";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

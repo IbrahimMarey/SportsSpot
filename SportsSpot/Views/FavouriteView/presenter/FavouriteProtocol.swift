@@ -8,9 +8,9 @@
 import Foundation
 
 protocol FavouriteProtocol{
+    
     var leaguesList: [MyLeagueDto]? {get set}
     func getDataFromCoreData()
     func deleteFromCoreData()
-    
     
 }

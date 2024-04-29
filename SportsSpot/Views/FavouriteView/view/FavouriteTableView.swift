@@ -10,9 +10,14 @@ import UIKit
 
 extension FavoutieViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailsViewController()
-        detailVC.league = leaguesList![indexPath.row]
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        if isConnected{
+            let detailVC = DetailsViewController()
+            detailVC.league = leaguesList![indexPath.row]
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }else{
+            let alert = Util.createConnectionAlert()
+            self.present(alert, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -27,7 +32,11 @@ extension FavoutieViewController : UITableViewDelegate{
     }
     
 }
-extension FavoutieViewController : UITextFieldDelegate{
+extension FavoutieViewController : UITextFieldDelegate,NetworkStatusProtocol{
+    func networkStatusDidChange(connected: Bool) {
+        isConnected = connected
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let currentText = (searchTF.text ?? "") + string
@@ -45,4 +54,6 @@ extension FavoutieViewController : UITextFieldDelegate{
         tableView.reloadData()
         return true
     }
+    
 }
+

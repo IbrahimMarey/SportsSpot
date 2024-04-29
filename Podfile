@@ -11,5 +11,6 @@ target 'SportsSpot' do
   pod 'SDWebImage'
   pod 'SwiftyOnboard'
   pod 'SplashScreen'
+  pod 'ReachabilitySwift'
 
 end

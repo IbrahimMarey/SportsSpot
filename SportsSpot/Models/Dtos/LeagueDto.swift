@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct MyLeagueDto: Codable {
     let league_key: Int?
@@ -14,9 +15,16 @@ struct MyLeagueDto: Codable {
     let country_name: String?
     let league_logo: String?
     let country_logo: String?
+    let sportName :String?
 }
 
 struct LeagueDto :Codable {
     let success:Int?
     let result:[MyLeagueDto]?
+}
+struct LeagueDataModel{
+    let sportName :String?
+    let league_logo: UIImage?
+    let league_name: String?
+    let league_key: Int?
 }

@@ -8,11 +8,10 @@
 import Foundation
 import Alamofire
 
-class Network  {
+class Network:NetworkProtocol {
     static let shared : Network = Network()
     let apiKey = "6c1c88500e41b80918d93cf0cf1dfaa81b7cb613452241ab62f48a103781099e"
     private  init() {
-        
     }
     
     
@@ -63,6 +62,7 @@ class Network  {
             }
         }
     }
+    
     func fetchFixturesLatestMatches(sport: String, leagueID: Int, completion: @escaping (Result<FixturesResult, Error>) -> Void) {
         let calendar = Calendar.current
         let currentDate = Date()
@@ -101,6 +101,7 @@ class Network  {
             }
         }
     }
+    
     func fetchLeaguesTeams(sport:String,leagueID:Int,completion:@escaping(Result<TeamResponse,Error>) -> Void){
         //https://apiv2.allsportsapi.com/football/?&met=Teams&leagueId=96&APIkey=6c1c88500e41b80918d93cf0cf1dfaa81b7cb613452241ab62f48a103781099e
         let urlString = "https://apiv2.allsportsapi.com/\(sport)/?&met=Teams&leagueId=\(leagueID)&APIkey=\(apiKey)"

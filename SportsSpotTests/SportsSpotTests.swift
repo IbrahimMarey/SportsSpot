@@ -10,30 +10,17 @@ import XCTest
 
 final class SportsSpotTests: XCTestCase {
 
-    var network: Network!
-    var mockObj : MockNetworkServices!
+    var network: NetworkProtocol!
 
         override func setUp() {
             super.setUp()
             network = Network.shared
-            mockObj = MockNetworkServices(shouldReturnError: false)
         }
 
         override func tearDown() {
             network = nil
             super.tearDown()
         }
-
-    func testExample() throws {
-
-    }
-
-    func testPerformanceExample() throws {
-        measure {
-        }
-    }
-
-
 
     //expection
     func testFetchLeagues() {
@@ -54,7 +41,6 @@ final class SportsSpotTests: XCTestCase {
      }
 
     func testFetchFixturesUpComingMatches() {
-
         let myExpectation = expectation(description: "Loading...")
 
         network.fetchFixturesUpComingMatches(sport: "football", leagueID: 207){ resulte in
@@ -86,37 +72,41 @@ final class SportsSpotTests: XCTestCase {
         }
         waitForExpectations(timeout: 5)
      }
-
     
-    ///
-    /// MOC
-    ///
-    ///
-    ///
-
-    func testFetchLeagueFromMockingJson() {
-
-        mockObj.fetchLeagueJson {
-            result, error in
-            if let error = error {
-                XCTFail()
-            }else{
-                XCTAssertNotNil(result)
+    //fetchLeaguesTeams
+    func testFetchLeaguesTeams() {
+        let myExpectation = expectation(description: "Loading...")
+        network.fetchLeaguesTeams(sport: "football",leagueID: 207) { leagues in
+            switch leagues {
+            case .success(let done):
+                XCTAssertNotNil(done)
+                myExpectation.fulfill()
+            case .failure(let err):
+                print(err.localizedDescription)
+                XCTFail("error")
+                
             }
         }
+        waitForExpectations(timeout: 5)
     }
-    
-    func testFetchFixturesUpComingMatchesJsonFromMockingJson() {
-
-        mockObj.fetchFixturesUpComingMatchesJson{
-            result, error in
-            if let error = error {
-                XCTFail()
-            }else{
-                XCTAssertNotNil(result)
+        
+    func testFetchTeam() {
+        let myExpectation = expectation(description: "Loading...")
+        network.fetchTeam(sport: "football",teamID: 96) { leagues in
+            switch leagues {
+            case .success(let done):
+                XCTAssertNotNil(done)
+                myExpectation.fulfill()
+            case .failure(let err):
+                print(err.localizedDescription)
+                XCTFail("error")
             }
         }
-    }
+        waitForExpectations(timeout: 5)
+     }
+    
+    
+    
 
    
     

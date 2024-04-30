@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import PKHUD
+//import PKHUD
 import SDWebImage
 
 class LeagueTableViewController: UITableViewController , LeagueProtocal{
@@ -14,11 +14,11 @@ class LeagueTableViewController: UITableViewController , LeagueProtocal{
     
     func failure(msg: String) {
         indicator.stopAnimating()
-        DispatchQueue.main.async {
-            PKHUD.sharedHUD.contentView = PKHUDTextView(text: msg)
-            PKHUD.sharedHUD.show()
-            PKHUD.sharedHUD.hide(afterDelay: 2.0)
-        }
+//        DispatchQueue.main.async {
+//            PKHUD.sharedHUD.contentView = PKHUDTextView(text: msg)
+//            PKHUD.sharedHUD.show()
+//            PKHUD.sharedHUD.hide(afterDelay: 2.0)
+//        }
     }
     
     func featchLeague(leagues: [MyLeagueDto]) {

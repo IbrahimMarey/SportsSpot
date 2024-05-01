@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sportCell" id="gTV-IL-0wX" customClass="MainViewCell" customModule="SportsSpot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="128" height="179"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="128" height="179"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOs-gV-VGP">
+                        <rect key="frame" x="0.0" y="0.0" width="128" height="179"/>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W5l-RX-Isn">
+                        <rect key="frame" x="2" y="2" width="124" height="175"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Football" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWk-Xg-ib1">
+                        <rect key="frame" x="0.0" y="149" width="128" height="30"/>
+                        <color key="backgroundColor" red="0.1244035736" green="0.46176201109999998" blue="0.89160615210000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Fgs-Qo-lGy"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="19"/>
+                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="tintColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="nWk-Xg-ib1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3JV-1g-biy"/>
+                <constraint firstAttribute="trailing" secondItem="rOs-gV-VGP" secondAttribute="trailing" id="5ub-hy-qZu"/>
+                <constraint firstItem="rOs-gV-VGP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6aU-iw-zl4"/>
+                <constraint firstItem="W5l-RX-Isn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="Ifh-Tc-Fk8"/>
+                <constraint firstAttribute="bottom" secondItem="nWk-Xg-ib1" secondAttribute="bottom" id="OXG-tN-BaK"/>
+                <constraint firstAttribute="bottom" secondItem="rOs-gV-VGP" secondAttribute="bottom" id="aXc-LR-VMJ"/>
+                <constraint firstItem="W5l-RX-Isn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="e3y-xr-SHO"/>
+                <constraint firstAttribute="bottom" secondItem="W5l-RX-Isn" secondAttribute="bottom" constant="2" id="ffY-fd-8iE"/>
+                <constraint firstAttribute="trailing" secondItem="nWk-Xg-ib1" secondAttribute="trailing" id="kaY-Fj-L0r"/>
+                <constraint firstAttribute="trailing" secondItem="W5l-RX-Isn" secondAttribute="trailing" constant="2" id="qWH-EF-DK5"/>
+                <constraint firstItem="rOs-gV-VGP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xyd-G3-tKQ"/>
+            </constraints>
+            <size key="customSize" width="128" height="46"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <integer key="value" value="16"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="cellTitle" destination="nWk-Xg-ib1" id="Bpr-Uu-56c"/>
+                <outlet property="imageCell" destination="W5l-RX-Isn" id="bP7-X7-cWm"/>
+                <outlet property="viewBorder" destination="rOs-gV-VGP" id="ejm-5Z-sJ3"/>
+            </connections>
+            <point key="canvasLocation" x="7.6335877862595414" y="44.718309859154935"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

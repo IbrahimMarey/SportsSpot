@@ -1,4 +1,4 @@
-# Sports Leagues App
+# Sports Spot Leagues App
 
 ## Overview
 

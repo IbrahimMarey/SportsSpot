@@ -11,6 +11,9 @@ import PKHUD
 class TeamDetailsView: UIViewController, TeamDetailsProtocal {
     var players = [Player]()
     var coaches = [CoachDto]()
+    
+
+    
     @IBOutlet weak var appBar: CustomAppBar!
     var sport: String?
     
@@ -18,9 +21,6 @@ class TeamDetailsView: UIViewController, TeamDetailsProtocal {
     var teamId: Int?
     
     func featchTeamDetails(team: TeamDto) {
-        //print(team.teamName!)
-        //print(team.teamKey!)
-        //print(team.teamLogo!)
         players = team.players ?? []
         coaches = team.coaches ?? []
         self.tableView.reloadData()
@@ -110,3 +110,4 @@ extension TeamDetailsView : UITableViewDataSource,UITableViewDelegate{
     }
     
 }
+

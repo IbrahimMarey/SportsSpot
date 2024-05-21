@@ -10,8 +10,9 @@ import SDWebImage
 
 class FavoutieViewController: UIViewController,UITableViewDataSource,FavouriteProtocol {
     
+    @IBOutlet weak var noFavImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-
+    
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var appBar: CustomAppBar!
     
@@ -52,7 +53,7 @@ class FavoutieViewController: UIViewController,UITableViewDataSource,FavouritePr
         cell.leagueLabel?.text = showFavourites[indexPath.row].league_name
         cell.leageuImage.sd_setImage(with: URL(string: showFavourites[indexPath.row].league_logo!),placeholderImage: UIImage(named: "images"))
         cell.separatorInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 16)
-
+        
         return cell
     }
     
@@ -74,9 +75,11 @@ class FavoutieViewController: UIViewController,UITableViewDataSource,FavouritePr
     
     func getDataFromCoreData() {
         showFavourites = leaguesList ?? []
+        noFavImage.isHidden = !showFavourites.isEmpty
         tableView.reloadData()
     }
     func deleteFromCoreData() {
         presenter.getDataFromCoreData()
     }
 }
+
